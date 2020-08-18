@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Ashutosh's Blog - python game tictactoe</title>
+        <link rel="stylesheet" href="http://gupta-ashutosh.github.io/theme/css/main.css" />
+        <link href="http://gupta-ashutosh.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Ashutosh's Blog Atom Feed" />
+
+        <!--[if IE]>
+            <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="http://gupta-ashutosh.github.io/">Ashutosh's Blog </a></h1>
+                <nav><ul>
+                    <li><a href="http://gupta-ashutosh.github.io/category/python.html">python</a></li>
+                </ul></nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="http://gupta-ashutosh.github.io/tic_tac_toe.html">TicTacToe Game</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2019-07-11T22:30:00+05:30">
+                Published: Thu 11 July 2019
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="http://gupta-ashutosh.github.io/author/ashutosh-gupta.html">Ashutosh Gupta</a>
+        </address>
+<p>In <a href="http://gupta-ashutosh.github.io/category/python.html">python</a>.</p>
+<p>tags: <a href="http://gupta-ashutosh.github.io/tag/python-game-tictactoe.html">python game tictactoe</a> </p>
+</footer><!-- /.post-info --><p>I have written a small program to play command based <a href="[https://en.wikipedia.org/wiki/Tic-tac-toe]">TicTacToe</a> game in Python.</p>
+<p>This is a good programing exercise for beginners.
+This small game will help users to start thinking logically and how to proceed and plan when coding.</p>
+<h2>Few of concepts that is used in this program</h2>
+<ul>
+<li>Dictionary in Python, how to insert value in it and how to iterate it.</li>
+<li>Loops and conditional statements</li>
+<li>Use of continue and break</li>
+<li>Taking input from user</li>
+</ul>
+<p>You can download the source code from <a href="https://github.com/gupta-ashutosh/gupta-ashutosh.github.io/blob/master/code_files_and_notebooks/tic_tac_toe.py">here</a>.</p>
+<div class="highlight"><pre><span></span><span class="n">theBoard</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+            <span class="mi">4</span><span class="p">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+            <span class="mi">7</span><span class="p">:</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39; &#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">printBoard</span><span class="p">(</span><span class="n">board</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-+-+-&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="mi">6</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-+-+-&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">board</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;|&quot;</span> <span class="o">+</span> <span class="n">board</span><span class="p">[</span><span class="mi">9</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">hasWon</span><span class="p">(</span><span class="n">theBoard</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+    <span class="n">winning_triplets</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="mi">2</span><span class="p">:</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">],</span> <span class="mi">4</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">],</span> <span class="mi">5</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+        <span class="mi">6</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span> <span class="mi">7</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">winning_triplets</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">won</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">theBoard</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">theBoard</span><span class="p">[</span><span class="n">move</span><span class="p">]:</span>
+                <span class="n">won</span> <span class="o">=</span> <span class="n">won</span> <span class="ow">and</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">won</span> <span class="o">=</span> <span class="n">won</span> <span class="ow">and</span> <span class="kc">False</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">won</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span> <span class="nf">boardFull</span><span class="p">(</span><span class="n">theBoard</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">theBoard</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">theBoard</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39; &#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">possibleMove</span><span class="p">(</span><span class="n">theBoard</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">theBoard</span><span class="p">[</span><span class="n">move</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span> <span class="ow">or</span> <span class="n">theBoard</span><span class="p">[</span><span class="n">move</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">start</span><span class="p">():</span>
+    <span class="n">turn</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">printBoard</span><span class="p">(</span><span class="n">theBoard</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">boardFull</span><span class="p">(</span><span class="n">theBoard</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Match Over, its a tie&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Turn for &quot;</span> <span class="o">+</span>  <span class="n">turn</span> <span class="o">+</span> <span class="s2">&quot;. Which place to enter? (Position 1-9 represent the location where you want to enter your turn)&quot;</span><span class="p">)</span>
+
+        <span class="n">move</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">possibleMove</span><span class="p">(</span><span class="n">theBoard</span><span class="p">,</span> <span class="n">move</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Move not Possible, please any other move&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+
+        <span class="n">theBoard</span><span class="p">[</span><span class="n">move</span><span class="p">]</span> <span class="o">=</span> <span class="n">turn</span>
+
+        <span class="k">if</span> <span class="n">hasWon</span><span class="p">(</span><span class="n">theBoard</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Congratulation &quot;</span> <span class="o">+</span> <span class="n">turn</span> <span class="o">+</span> <span class="s2">&quot; you have won the match&quot;</span><span class="p">)</span>
+            <span class="k">break</span>
+
+        <span class="k">if</span> <span class="n">turn</span> <span class="o">==</span> <span class="s1">&#39;X&#39;</span><span class="p">:</span>
+            <span class="n">turn</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">turn</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+
+    <span class="n">printBoard</span><span class="p">(</span><span class="n">theBoard</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">start</span><span class="p">()</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
+                            <li><a href="#">You can modify those links in your config file</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+                <div class="social">
+                        <h2>social</h2>
+                        <ul>
+                            <li><a href="http://gupta-ashutosh.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+
+                            <li><a href="#">You can add links in your config file</a></li>
+                            <li><a href="#">Another social link</a></li>
+                        </ul>
+                </div><!-- /.social -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <address id="about" class="vcard body">
+                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
+                </address><!-- /#about -->
+
+                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+        </footer><!-- /#contentinfo -->
+
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-175600168-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = 'https://ssl.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+</body>
+</html>
